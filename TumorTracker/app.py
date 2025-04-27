@@ -154,7 +154,7 @@ def predict():
             # Send to Node.js API
             with open(filepath, 'rb') as f:
                 files = {'image': (new_filename, f, 'image/jpeg')}
-                response = requests.post('http://localhost:3000/predict', files=files)
+                response = requests.post('https://predict-q5cu.onrender.com/predict', files=files)
 
             if response.status_code != 200:
                 flash('Error from prediction API', 'danger')
