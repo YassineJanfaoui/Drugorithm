@@ -8,7 +8,7 @@ const cors = require("cors");
 const multer = require("multer");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -25,7 +25,9 @@ const upload = multer({
 // Load model on startup
 async function initializeModel() {
   try {
-    model = await tf.loadLayersModel("file://./model_lung/model.json");
+   const modelPath = path.join(__dirname, "model_lung", "model.json");
+model = await tf.loadLayersModel(`file://${modelPath}`);
+
     console.log("Model loaded successfully");
   } catch (error) {
     console.error("Error loading model:", error);
@@ -261,8 +263,7 @@ async function predictImage(model, imagePath) {
 }
 
 // Start server
-initializeModel().then(() => {
-  app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-  });
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
 });
