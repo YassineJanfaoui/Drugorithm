@@ -1,0 +1,24 @@
+# Core Flask & Web
+Flask==3.0.0
+Werkzeug==3.0.1
+flask-login==0.6.3
+flask-sqlalchemy==3.1.1
+flask-talisman==0.8.1
+flask-limiter==3.5.0
+
+# Database
+SQLAlchemy==2.0.25
+psycopg2-binary==2.9.9  # For PostgreSQL
+
+# AI/ML
+numpy==1.26.4
+google-generativeai==0.3.2  # For genai imports
+
+# File/Image Processing
+Pillow==10.1.0  # For image preprocessing
+
+# Security
+python-dotenv==1.0.0
+
+# Production
+gunicorn==21.2.0
