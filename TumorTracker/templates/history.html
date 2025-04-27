@@ -1,0 +1,65 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+    <div class="card shadow-sm">
+      <div
+        class="card-header bg-primary text-white d-flex justify-content-between align-items-center"
+      >
+        <h3 class="card-title mb-0">Analysis History</h3>
+        <form
+          action="{{ url_for('clear_history') }}"
+          method="post"
+          onsubmit="return confirm('Are you sure you want to clear all history?');"
+        >
+          <button type="submit" class="btn btn-sm btn-outline-light">
+            <i class="fas fa-trash-can me-1"></i>Clear History
+          </button>
+        </form>
+      </div>
+      <div class="card-body">
+        {% if predictions %}
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Classification</th>
+                <th>Confidence</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for prediction in predictions %}
+              <tr>
+                <td>
+                  <img
+                    src="{{ url_for('static', filename=prediction.image_path) }}"
+                    class="history-thumbnail"
+                    alt="Tumor image"
+                  />
+                </td>
+                <td>
+                  <span
+                    class="badge {% if prediction.result == 'Benign' %}bg-success{% else %}bg-danger{% endif %}"
+                  >
+                    {{ prediction.prediction }}
+                  </span>
+                </td>
+                <td>{{ "%0.2f"|format(prediction.confidence * 100) }}%</td>
+                <td>{{ prediction.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info" role="alert">
+          <i class="fas fa-info-circle me-2"></i>No analysis history found.
+          Classify some images to see them here.
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

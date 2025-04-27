@@ -1,0 +1,149 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">About Tumor Classification</h3>
+            </div>
+            <div class="card-body">
+                <h4>What is this application?</h4>
+                <p>
+                    This web application uses machine learning to classify tumor images as either benign (non-cancerous) 
+                    or malignant (cancerous). It is designed for educational purposes to demonstrate how AI can assist 
+                    in medical image analysis.
+                </p>
+                
+                <hr>
+                
+                <h4>How it works</h4>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-upload me-2"></i>Image Upload</h5>
+                                <p class="card-text">
+                                    You upload a tumor image through the web interface. The application accepts common 
+                                    image formats like JPG, JPEG, and PNG.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-image me-2"></i>Preprocessing</h5>
+                                <p class="card-text">
+                                    The uploaded image is preprocessed to standardize its format. This includes resizing 
+                                    to a standard dimension and normalizing pixel values.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-brain me-2"></i>AI Classification</h5>
+                                <p class="card-text">
+                                    A deep learning model analyzes the image. This model has been trained on 
+                                    thousands of sample tumor images to identify patterns associated with benign and 
+                                    malignant tumors.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-chart-simple me-2"></i>Results Analysis</h5>
+                                <p class="card-text">
+                                    The system provides a classification (benign or malignant) along with a confidence 
+                                    score indicating how certain the model is of its classification.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <h4>Understanding Tumors</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card bg-success-subtle mb-3">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0">Benign Tumors</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Benign tumors are non-cancerous growths that do not invade nearby tissues or spread to other parts of the body.</p>
+                                
+                                <h6>Typical Characteristics:</h6>
+                                <ul>
+                                    <li>Clear, defined borders</li>
+                                    <li>Uniform cell structure</li>
+                                    <li>Slow growth rate</li>
+                                    <li>No invasion into surrounding tissues</li>
+                                    <li>No spread to other body parts</li>
+                                    <li>Rarely life-threatening</li>
+                                </ul>
+                                
+                                <h6>Examples:</h6>
+                                <ul>
+                                    <li>Lipomas (fatty tissue tumors)</li>
+                                    <li>Fibromas (fibrous tissue tumors)</li>
+                                    <li>Adenomas (glandular tissue tumors)</li>
+                                    <li>Hemangiomas (blood vessel tumors)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card bg-danger-subtle mb-3">
+                            <div class="card-header bg-danger text-white">
+                                <h5 class="mb-0">Malignant Tumors</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Malignant tumors are cancerous growths that can invade nearby tissues and spread to other parts of the body.</p>
+                                
+                                <h6>Typical Characteristics:</h6>
+                                <ul>
+                                    <li>Irregular, poorly defined borders</li>
+                                    <li>Abnormal cell structure</li>
+                                    <li>Rapid, uncontrolled growth</li>
+                                    <li>Invasion into surrounding tissues</li>
+                                    <li>Ability to spread (metastasize)</li>
+                                    <li>Often life-threatening if left untreated</li>
+                                </ul>
+                                
+                                <h6>Examples:</h6>
+                                <ul>
+                                    <li>Carcinomas (epithelial tissue cancers)</li>
+                                    <li>Sarcomas (connective tissue cancers)</li>
+                                    <li>Lymphomas (lymphatic system cancers)</li>
+                                    <li>Leukemias (blood cancers)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning mt-4">
+                    <h5 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>Important Disclaimer</h5>
+                    <p>
+                        This application is designed for educational purposes only and should not be used for clinical diagnosis. 
+                        The predictions made by this system are not a substitute for professional medical advice, diagnosis, or treatment.
+                    </p>
+                    <p>
+                        If you have concerns about a medical condition, please consult with a qualified healthcare provider.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

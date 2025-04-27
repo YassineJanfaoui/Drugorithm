@@ -1,0 +1,102 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-header bg-success text-white">
+        <h3 class="card-title mb-0">Registration</h3>
+        <!-- Changed from "Patient Registration" -->
+      </div>
+      <div class="card-body">
+        <form method="POST" action="{{ url_for('register') }}">
+          <div class="mb-3">
+            <label for="username" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+
+          <!-- Add role selection -->
+          <div class="mb-3">
+            <label for="role" class="form-label">Register As</label>
+            <select class="form-select" id="role" name="role" required>
+              <option value="">Select your role</option>
+              <option value="patient">Patient</option>
+              <option value="doctor">Doctor</option>
+            </select>
+          </div>
+
+          <!-- Doctor selection (shown only for patients) -->
+          <div class="mb-3" id="doctorField" style="display: none">
+            <label for="doctor_id" class="form-label">Select Your Doctor</label>
+            <select class="form-select" id="doctor_id" name="doctor_id">
+              <option value="">Select your doctor</option>
+              {% for doctor in doctors %}
+              <option value="{{ doctor.id }}">{{ doctor.username }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="confirm_password" class="form-label"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="confirm_password"
+              name="confirm_password"
+              required
+            />
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success">Register</button>
+          </div>
+        </form>
+        <div class="mt-3 text-center">
+          <a href="{{ url_for('login') }}" class="text-decoration-none">
+            Already have an account? Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Show/hide doctor selection based on role
+  document.getElementById("role").addEventListener("change", function () {
+    const doctorField = document.getElementById("doctorField");
+    if (this.value === "patient") {
+      doctorField.style.display = "block";
+      document.getElementById("doctor_id").setAttribute("required", "");
+    } else {
+      doctorField.style.display = "none";
+      document.getElementById("doctor_id").removeAttribute("required");
+    }
+  });
+</script>
+{% endblock %}
